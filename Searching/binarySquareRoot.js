@@ -14,18 +14,22 @@ function squareRoot(n){
 console.log(squareRoot(number))
 
 // using binary search algorithm
-// function binary(n){
-//     let num = n
-//     let low = 1, high = n;
-//     if(low <= high){
-//         let mid = Math.floor((low + high)/2);
-//         let sqrt = mid * mid
-//         if(sqrt == num){
-//             return mid
-//         }else if(sqrt > num){
-//             return binary(n, )
-//         }
-//     }
-// }
+function binary(n){
+    let num = n
+    let low = 1, high = n, ans = -1;
+    while(low <= high){
+        let mid = Math.floor((low + high)/2);
+        let sqrt = mid * mid
+        if(sqrt == num){
+            return mid
+        }else if(sqrt > num){
+            high = mid - 1;
+        }else{
+            low = mid + 1;
+            ans = mid
+        }
+    }
+    return ans
+}
 
-// binary(n)
+console.log(binary(36))
