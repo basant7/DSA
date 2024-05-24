@@ -1,4 +1,5 @@
-let array = [8, 4, 7, 9, 3, 10, 5];
+let array = [8, 4, 7, 9, 3, 10, 5]; 
+// [4,3,7,9,8,10,5]
 
 function partition(arr, l, r) {
     // last element in arr will be the pivot
@@ -18,12 +19,13 @@ function partition(arr, l, r) {
   }
 
   
-  let pI = ++index;
+  index++;
 //   swap the element at index with last element of the array
   temp = arr[index];
   arr[index] = p;
   arr[r] = temp;
-  return pI;
+
+  return index;
 }
 
 function lomuto(arr, l, r) {
