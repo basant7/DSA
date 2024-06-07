@@ -31,6 +31,20 @@ function selectionSort(arr) {
   }
 }
 
+// using insertion sort for sorting
+function insertionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let j = i;
+    while (j >= 0 && arr[j + 1] < arr[j]) {
+      let temp = arr[j + 1];
+      arr[j + 1] = arr[j];
+      arr[j] = temp;
+      j--;
+    }
+  }
+  console.log(arr);
+}
+
 // find duplicates function
 function findDuplicates(arr) {
   if (arr.length <= 0) {
@@ -40,7 +54,8 @@ function findDuplicates(arr) {
 
   //   call sort functions (remove comment of the sort you want to use)
   //   bubbleSort(arr);
-  selectionSort(array);
+  //   selectionSort(array);
+  insertionSort(array);
 
   let temp = [];
   let index = 0;
