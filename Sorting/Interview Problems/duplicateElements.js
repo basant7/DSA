@@ -1,5 +1,5 @@
 // Find Duplicates using multiple Algorithms
-let array = [4, 8, 3, 9, 10, 2, 1, 8, 8, 8, 8, 8, 8, 8, 6];
+let array = [4, 8, 3, 9, 8, 10, 2, 1, 4, 6];
 
 // using bubbleSort for sorting
 function bubbleSort(arr) {
@@ -14,13 +14,34 @@ function bubbleSort(arr) {
   }
 }
 
+// using selection sort for sorting
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let min_index = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min_index]) {
+        min_index = j;
+      }
+    }
+    if (i != min_index) {
+      let temp = arr[i];
+      arr[i] = arr[min_index];
+      arr[min_index] = temp;
+    }
+  }
+}
+
+// find duplicates function
 function findDuplicates(arr) {
   if (arr.length <= 0) {
     console.log("Empty array");
     return;
   }
-  bubbleSort(arr);
-  //   To check for duplicate
+
+  //   call sort functions (remove comment of the sort you want to use)
+  //   bubbleSort(arr);
+  selectionSort(array);
+
   let temp = [];
   let index = 0;
   let alreadyaddedElement;
