@@ -46,48 +46,49 @@ function insertionSort(arr) {
 }
 
 // using merge sort for sorting
-function merge(arr, l,mid, h){
-  let low = mid-l + 1;
+function merge(arr, l, mid, h) {
+  let low = mid - l + 1;
   let high = h - mid;
   let arr1 = [];
   let arr2 = [];
-  for(let i = 0; i< low; i++){
-    arr1.push(arr[low + i])
+  for (let i = 0; i < low; i++) {
+    arr1[i] = arr[l + i];
   }
-  for(let i = 0; i< high; i++){
-    arr2.push(arr[mid + 1+ i])
+  for (let i = 0; i < high; i++) {
+    arr2[i] = arr[mid + 1 + i];
   }
 
-  let i=0,j=0;
+  let i = 0,
+    j = 0;
   let k = l;
-  while(i < arr1.length && j < arr2.length){
-    if(arr1[i] <= arr2[j]){
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] <= arr2[j]) {
       arr[k] = arr1[i];
       i++;
-    }else{
+    } else {
       arr[k] = arr2[j];
-      j++
+      j++;
     }
     k++;
   }
-  while(i< arr1.length){
-    arr[k] = arr1[i]
+  while (i < arr1.length) {
+    arr[k] = arr1[i];
     i++;
     k++;
   }
-  while(j< arr2.length){
-    arr[k] = arr2[j]
+  while (j < arr2.length) {
+    arr[k] = arr2[j];
     j++;
     k++;
   }
 }
 
-function mergeSort(arr, l, r){
-  if(l < r){
-    let mid = Math.floor((r+l)/2)
+function mergeSort(arr, l, r) {
+  if (l < r) {
+    let mid = Math.floor((r + l) / 2);
     mergeSort(arr, l, mid);
     mergeSort(arr, mid + 1, r);
-    merge(arr, l, mid, r)
+    merge(arr, l, mid, r);
   }
 }
 
@@ -102,7 +103,8 @@ function findDuplicates(arr) {
   //   bubbleSort(arr);
   //   selectionSort(array);
   // insertionSort(array);
-  mergeSort(arr, 0, arr.length-1)
+  mergeSort(arr, 0, arr.length - 1);
+  console.log(arr);
 
   let temp = [];
   let index = 0;
