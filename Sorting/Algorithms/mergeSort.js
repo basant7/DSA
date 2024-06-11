@@ -10,12 +10,13 @@ function merge(arr, left, mid, right) {
 
   let arr1 = [],
     arr2 = [];
+  // array for the first half from left to mid
   for (let i = 0; i < n1; i++) {
     // take left+i from the array to increment to next variable in the array
     // and add it to arr1
     arr1[i] = arr[left + i];
   }
-
+  // array for the second half starting from mid+1
   for (let j = 0; j < n2; j++) {
     // take mid + j + 1 from the array to increment to next variable in the array
     // and add it to arr2
@@ -61,7 +62,7 @@ function mergeSort(arr, left, right) {
 
 function printArray(arr) {
   mergeSort(array, firstIndex, lastindex);
-  return arr
+  return arr;
 }
 
 console.log(printArray(array));
