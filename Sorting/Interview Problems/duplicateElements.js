@@ -92,6 +92,38 @@ function mergeSort(arr, l, r) {
   }
 }
 
+// using quick sort for sorting
+function quick(arr, l, h) {
+  let p = arr[l];
+  let i = l - 1;
+  let j = h + 1;
+  while (true) {
+    do {
+      i++;
+    } while (arr[i] < p);
+
+    do {
+      j--;
+    } while (arr[j] > p);
+
+    if (i >= j) {
+      return j;
+    }
+
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+}
+
+function quickSort(arr, l, r) {
+  if (l < r) {
+    let p = quick(arr, l, r);
+    quickSort(arr, l, p);
+    quickSort(arr, p + 1, r);
+  }
+}
+
 // find duplicates function
 function findDuplicates(arr) {
   if (arr.length <= 0) {
@@ -103,7 +135,8 @@ function findDuplicates(arr) {
   //   bubbleSort(arr);
   //   selectionSort(array);
   // insertionSort(array);
-  mergeSort(arr, 0, arr.length - 1);
+  // mergeSort(arr, 0, arr.length - 1);
+  quickSort(arr, 0, arr.length - 1);
   console.log(arr);
 
   let temp = [];
