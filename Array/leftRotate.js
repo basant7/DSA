@@ -21,6 +21,8 @@ function repeatForR(arr, r) {
 
 function leftRotateBetter(arr, r) {
   let temp = [];
+  // if r exceedes the length of the array
+  r = r % arr.length;
   for (let i = 0; i < r; i++) {
     temp[i] = arr[i];
   }
@@ -28,6 +30,7 @@ function leftRotateBetter(arr, r) {
   for (let i = r; i < arr.length; i++) {
     arr[i - r] = arr[i];
   }
+  console.log(arr)
   //   arr = [4,5,6,7,8,4,5,6]
   for (let i = 0; i < temp.length; i++) {
     arr[arr.length - r + i] = temp[i];
