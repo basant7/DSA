@@ -1,4 +1,4 @@
-let array = [3, 6, 9, 12, 8, 7, 6, 5, 20];
+let array = [1, 5, 3, 8, 12];
 
 function stock(arr) {
   let profit = 0;
@@ -32,6 +32,16 @@ function stock(arr) {
     }
   }
   return profit;
+}
+
+function stockBetter(arr) {
+  let profit = 0;
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > arr[i - 1]) {
+      profit += arr[i] - arr[i - 1];
+    }
+  }
+  console.log(profit);
 }
 
 console.log(stock(array));
