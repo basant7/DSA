@@ -41,7 +41,8 @@ function stockBetter(arr) {
       profit += arr[i] - arr[i - 1];
     }
   }
-  console.log(profit);
+  return profit
 }
 
 console.log(stock(array));
+console.log(stockBetter(array));
