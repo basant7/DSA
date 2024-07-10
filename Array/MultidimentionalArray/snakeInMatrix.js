@@ -5,16 +5,16 @@ let array = [
   [13, 14, 15, 16],
 ];
 
-function snake(arr) {
+function snake(arr, r, c) {
   let index = 0;
   let temp = [];
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < r; i++) {
     if (i % 2 == 0) {
-      for (let j = 0; j < arr.length; j++) {
+      for (let j = 0; j < c; j++) {
         temp[index++] = arr[i][j];
       }
     } else {
-      for (let j = arr.length - 1; j >= 0; j--) {
+      for (let j = c - 1; j >= 0; j--) {
         temp[index++] = arr[i][j];
       }
     }
@@ -22,4 +22,4 @@ function snake(arr) {
   return temp;
 }
 
-console.log(snake(array)); // 1,2,3,4, 8,7,6,5, 9,10,11,12, 16,15,14,13
+console.log(snake(array, 4, 4)); // 1,2,3,4, 8,7,6,5, 9,10,11,12, 16,15,14,13
