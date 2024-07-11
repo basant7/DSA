@@ -35,6 +35,12 @@ function rotateBy90Better(arr) {
     }
   }
   console.log(arr);
+  //   [
+  //     [ 1, 5, 9, 13 ],
+  //     [ 2, 6, 10, 14 ],
+  //     [ 3, 7, 11, 15 ],
+  //     [ 4, 8, 12, 16 ]
+  //   ]
   for (let i = 0; i < arr.length; i++) {
     let low = 0,
       high = arr.length - 1;
