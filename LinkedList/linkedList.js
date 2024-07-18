@@ -178,6 +178,38 @@ class LinkedList {
     // length ek se ghata do
     this.length--;
   }
+
+  reverse() {
+    let i = 0;
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    let node = this.tail;
+    let nextNode;
+    let prevNode = null;
+    while (i < this.length) {
+      // nextNode may agle node daal do
+      nextNode = node.next;
+      // jo current node hai, uske next may pichle node ko daal do
+      node.next = prevNode;
+      // pichle node may current ka node daal do
+      prevNode = node;
+      // current node may next node daal do
+      node = nextNode;
+      i++;
+    }
+
+    // 13  27  32  69
+    // 1. node = 13                                       node = 27
+
+    // 2. nextNode = 27                                   nextNode = 32
+    // 3. node.next = null                                node.next = 13
+
+    // 4. prevNode = 13                                   prevNode = 27
+    // 5. node = 27                                       node = 32
+    return;
+  }
 }
 
 const singleLinkedList = new LinkedList();
@@ -200,6 +232,9 @@ singleLinkedList.set("1st node", 0);
 singleLinkedList.insertAnywhere("six and half node", 6);
 singleLinkedList.deleteAnywhere(4);
 console.log("\n");
+singleLinkedList.traverse();
+console.log("\n");
+singleLinkedList.reverse();
 singleLinkedList.traverse();
 
 console.log(JSON.stringify(singleLinkedList));
