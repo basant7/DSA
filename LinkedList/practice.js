@@ -73,12 +73,47 @@ class LinkedList {
     return;
   }
 
+  //   ek ek krke sabhi elements print kra traverse method se
   traverse() {
     let node = this.head;
     while (node) {
       console.log(node.value);
       node = node.next;
     }
+  }
+
+  //   pehla element delete
+  deleteFirstElement() {
+    if (this.length === 0) {
+      return;
+    }
+    // agr linked list m ek hi element hai to head and tail null ho jayenge or length 0
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return;
+    }
+    // head ko next node dedo or length-- krdo
+    this.head = this.head.next;
+    this.length--;
+    return;
+  }
+
+  // starting m add krna ho element
+  addElementAtBeginning(value) {
+    let newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.length++;
+      return;
+    }
+    // new node k next may head daal ho
+    // or head ko new node assign krdo
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
   }
 }
 
@@ -90,7 +125,9 @@ singleLinkedList.push("second node");
 singleLinkedList.push("third node");
 singleLinkedList.push("forth node");
 singleLinkedList.pop();
+singleLinkedList.deleteFirstElement();
+singleLinkedList.addElementAtBeginning("fifth node");
 
 singleLinkedList.traverse();
 
-// console.log(JSON.stringify(singleLinkedList));
+console.log(JSON.stringify(singleLinkedList));
