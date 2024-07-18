@@ -163,6 +163,21 @@ class LinkedList {
     newNode.next = nextNode;
     this.length++;
   }
+
+  deleteAnywhere(index) {
+    // agar kisi chutiye ney index < 0 ya > linked list ki length
+    // to false return krdo
+    if (index < 0 || index >= this.length) return false;
+    // agar index linkedlist k length k brabar hua to past element nikal do
+    if (index === this.length) return this.pop();
+    // jo delete krna hai uske pichle wala element kisi variable m store krdo
+    let prevNode = this.getAtIndex(index - 1);
+    // for jis index pr delete krna hai uske next ki value previous k next m daal do
+    let nextNode = prevNode.next;
+    prevNode.next = nextNode.next;
+    // length ek se ghata do
+    this.length--;
+  }
 }
 
 const singleLinkedList = new LinkedList();
@@ -183,7 +198,8 @@ singleLinkedList.traverse();
 singleLinkedList.getAtIndex(5);
 singleLinkedList.set("1st node", 0);
 singleLinkedList.insertAnywhere("six and half node", 6);
+singleLinkedList.deleteAnywhere(4);
 console.log("\n");
 singleLinkedList.traverse();
 
-// console.log(JSON.stringify(singleLinkedList));
+console.log(JSON.stringify(singleLinkedList));
