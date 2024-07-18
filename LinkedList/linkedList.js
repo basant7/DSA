@@ -131,25 +131,37 @@ class LinkedList {
       node = node.next;
       count++;
     }
-    console.log(node);
+    return node;
   }
 
   // kisi position pr kuch or value set krne ka to ye method use krne ka
   set(value, index) {
-    // check kro ki kisi chutiye ney 0 se kum index or linked list
-    // ki actual length se jada value to mahi daal di params may
-    if (index < 0 || index >= this.length) {
-      return;
-    }
-    let count = 0;
-    let node = this.head;
-    // count ko index k brabar lekr jao and us position pr jo node hai
-    // usme apne value daal do
-    while (index != count) {
-      node = node.next;
-      count++;
+    let node = this.getAtIndex(index);
+    if (!node) {
+      return false;
     }
     node.value = value;
+  }
+
+  insertAnywhere(value, index) {
+    // agar kisi chutiye ney index < 0 ya > linked list ki length
+    // to false return krdo
+    if (index < 0 || index > this.length) return false;
+    // agar index === linked list length to fir value last m jayegi
+    if (index === this.length) return this.push(value);
+    // agr index === 0 to value first m jayegi
+    if (index === 0) return this.addElementAtBeginning(value);
+    // current index pr jo node abhi hai usko ek variable m store krlo (prev)
+    let prev = this.getAtIndex(index - 1);
+    // new node bnao
+    let newNode = new Node(value);
+    // current index wali node ki value kisi variable m store krdo (nextNode)
+    let nextNode = prev.next;
+    // prev k next may new node daal do
+    prev.next = newNode;
+    // new node k next may next wali node daal do
+    newNode.next = nextNode;
+    this.length++;
   }
 }
 
@@ -170,6 +182,8 @@ singleLinkedList.addElementAtBeginning("9th node");
 singleLinkedList.traverse();
 singleLinkedList.getAtIndex(5);
 singleLinkedList.set("1st node", 0);
+singleLinkedList.insertAnywhere("six and half node", 6);
+console.log("\n");
 singleLinkedList.traverse();
 
 // console.log(JSON.stringify(singleLinkedList));
