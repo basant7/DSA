@@ -42,6 +42,44 @@ class LinkedList {
       this.length++;
     }
   }
+
+  //   agr last element delete krna hai to pop method use kr na
+  pop() {
+    // agar linked list khali hai to chutiye pop kyu kr rha
+    if (this.length === 0) {
+      return;
+    }
+    // agr linked list m ek hi element hai to head and tail null ho jayenge or length 0
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return;
+    }
+
+    let lastNode = this.head;
+    let nodeToDelete;
+    // jab tk last node tak na pahunch jaye traverse krta reh
+    // or second last element ko ek variable ko store kr lo
+    while (lastNode.next !== null) {
+      nodeToDelete = lastNode;
+      lastNode = lastNode.next;
+    }
+    // us second last element ko tail m store kr de and
+    // tail ka next null kr do
+    this.tail = nodeToDelete;
+    this.tail.next = null;
+    this.length--;
+    return;
+  }
+
+  traverse() {
+    let node = this.head;
+    while (node) {
+      console.log(node.value);
+      node = node.next;
+    }
+  }
 }
 
 const singleLinkedList = new LinkedList();
@@ -51,5 +89,8 @@ singleLinkedList.push("first node");
 singleLinkedList.push("second node");
 singleLinkedList.push("third node");
 singleLinkedList.push("forth node");
+singleLinkedList.pop();
 
-console.log(JSON.stringify(singleLinkedList));
+singleLinkedList.traverse();
+
+// console.log(JSON.stringify(singleLinkedList));
