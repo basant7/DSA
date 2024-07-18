@@ -114,6 +114,42 @@ class LinkedList {
     newNode.next = this.head;
     this.head = newNode;
     this.length++;
+    return;
+  }
+
+  getAtIndex(index) {
+    // check kro ki kisi chutiye ney 0 se kum index or linked list
+    // ki actual length se jada value to mahi daal di params may
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+    let count = 0;
+    let node = this.head;
+    // count ko increase krte jao or
+    // jab count index k equal ho jaye to console kra do node ko
+    while (count != index) {
+      node = node.next;
+      count++;
+    }
+    console.log(node);
+  }
+
+  // kisi position pr kuch or value set krne ka to ye method use krne ka
+  set(value, index) {
+    // check kro ki kisi chutiye ney 0 se kum index or linked list
+    // ki actual length se jada value to mahi daal di params may
+    if (index < 0 || index >= this.length) {
+      return;
+    }
+    let count = 0;
+    let node = this.head;
+    // count ko index k brabar lekr jao and us position pr jo node hai
+    // usme apne value daal do
+    while (index != count) {
+      node = node.next;
+      count++;
+    }
+    node.value = value;
   }
 }
 
@@ -124,10 +160,16 @@ singleLinkedList.push("first node");
 singleLinkedList.push("second node");
 singleLinkedList.push("third node");
 singleLinkedList.push("forth node");
+singleLinkedList.push("fifth node");
+singleLinkedList.push("sixth node");
+singleLinkedList.push("seventh node");
+singleLinkedList.push("eight node");
 singleLinkedList.pop();
 singleLinkedList.deleteFirstElement();
-singleLinkedList.addElementAtBeginning("fifth node");
-
+singleLinkedList.addElementAtBeginning("9th node");
+singleLinkedList.traverse();
+singleLinkedList.getAtIndex(5);
+singleLinkedList.set("1st node", 0);
 singleLinkedList.traverse();
 
-console.log(JSON.stringify(singleLinkedList));
+// console.log(JSON.stringify(singleLinkedList));
