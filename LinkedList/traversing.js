@@ -50,6 +50,14 @@ class LinkedList {
     this.length--;
     return;
   }
+
+  traverse() {
+    let node = this.head;
+    while (node) {
+      console.log(node.data);
+      node = node.next;
+    }
+  }
 }
 
 class Node {
@@ -66,5 +74,6 @@ linkedList.push(3);
 linkedList.push(4);
 linkedList.push(5);
 linkedList.pop();
+linkedList.traverse();
 
 console.log(linkedList);
