@@ -120,6 +120,50 @@ class DuublyLinkedList {
     node.value = value;
     return;
   }
+
+  insertAtAnywhere(value, index) {
+    let newNode = new Node(value);
+    // check kro ki kisi chutiye ney 0 se kum index or linked list
+    // ki actual length se jada value to mahi daal di params may
+    if (index < 0 || index > this.length) return false;
+    if (index === 1) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.length++;
+    }
+    // previous node nikalo
+    let prevNode = this.get(index - 1);
+    // next node bhi nikalo
+    let nextNode = prevNode.next;
+    // previous node k next may new node daal do
+    prevNode.next = newNode;
+    // new node k previous may previous node daal do
+    newNode.prev = prevNode;
+    // new node k next may next node daal do
+    newNode.next = nextNode;
+    // next node k previous may new node daal do
+    nextNode.prev = newNode;
+    this.length++;
+    return;
+  }
+
+  deleteAtAnywhere(index) {
+    // check kro ki kisi chutiye ney 0 se kum index or linked list
+    // ki actual length se jada value to mahi daal di params may
+    if (index < 0 || index >= this.length) return false;
+    // agar ek hi element hai to usko pop krdo
+    if (index === this.length) this.pop();
+    // previous node nikalo
+    let prevNode = this.get(index - 1);
+    // node jo delete krni hai vo nikalo
+    let nodeToDelete = prevNode.next;
+    // next node bhi nikalo
+    let nextNode = nodeToDelete.next;
+    // next node k previous may previous node daal do
+    nextNode.prev = prevNode;
+    // or previous node k next may next node daal do
+    prevNode.next = nextNode;
+  }
 }
 
 const doublyLinkedList = new DuublyLinkedList();
@@ -137,7 +181,9 @@ doublyLinkedList.insertAtBigining(9);
 doublyLinkedList.deleteAtBegining();
 doublyLinkedList.get(5);
 doublyLinkedList.set(9, 5);
+doublyLinkedList.insertAtAnywhere(6, 5);
+doublyLinkedList.deleteAtAnywhere(6);
 console.log("\n");
 doublyLinkedList.print();
 
-// console.log(doublyLinkedList);
+console.log(doublyLinkedList);
