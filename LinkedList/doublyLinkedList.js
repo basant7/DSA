@@ -59,6 +59,23 @@ class DuublyLinkedList {
       node = node.next;
     }
   }
+
+  insertAtBigining(value) {
+    let newNode = new Node(value);
+    // agar linked list khali hai to head and tail ko new node assign krdo
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.length++;
+    }
+    // jo head ka prev hoga usme new node daal do
+    this.head.prev = newNode;
+    // new node jo hogi uske next may head daal do
+    newNode.next = this.head;
+    // or head ko new Node assign krdo
+    this.head = newNode;
+    this.length++;
+  }
 }
 
 const doublyLinkedList = new DuublyLinkedList();
@@ -72,6 +89,7 @@ doublyLinkedList.push(6);
 doublyLinkedList.push(7);
 doublyLinkedList.push(8);
 doublyLinkedList.pop();
+doublyLinkedList.insertAtBigining(9);
 doublyLinkedList.print();
 
 // console.log(doublyLinkedList);
