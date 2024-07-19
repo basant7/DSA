@@ -76,6 +76,23 @@ class DuublyLinkedList {
     this.head = newNode;
     this.length++;
   }
+
+  deleteAtBegining() {
+    if (!this.head) return null;
+    // agr ek hi element hai to head and tail ko khali krde
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length--;
+    }
+    // head ka next element kisi variable may store krde
+    let node = this.head.next;
+    // us variable k prev ko null krde
+    node.prev = null;
+    // or head ko vo next node assign krde
+    this.head = node;
+    this.length--;
+  }
 }
 
 const doublyLinkedList = new DuublyLinkedList();
@@ -90,6 +107,7 @@ doublyLinkedList.push(7);
 doublyLinkedList.push(8);
 doublyLinkedList.pop();
 doublyLinkedList.insertAtBigining(9);
+doublyLinkedList.deleteAtBegining();
 doublyLinkedList.print();
 
 // console.log(doublyLinkedList);
