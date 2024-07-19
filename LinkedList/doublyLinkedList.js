@@ -93,6 +93,31 @@ class DuublyLinkedList {
     this.head = node;
     this.length--;
   }
+
+  get(index) {
+    // check kro ki kisi chutiye ney 0 se kum index or linked list
+    // ki actual length se jada value to mahi daal di params may
+    if (index < 0 || index >= this.length) {
+      return false;
+    }
+    let count = 0;
+    let node = this.head;
+    // count tab tak chlata ja jab tak index k brabar na ho jaye
+    while (count !== index) {
+      node = node.next;
+      count++;
+    }
+    return node;
+  }
+
+  set(value, index) {
+    let node = this.get(index);
+    if (!node) {
+      return false;
+    }
+    node.value = value;
+    return;
+  }
 }
 
 const doublyLinkedList = new DuublyLinkedList();
@@ -108,6 +133,9 @@ doublyLinkedList.push(8);
 doublyLinkedList.pop();
 doublyLinkedList.insertAtBigining(9);
 doublyLinkedList.deleteAtBegining();
+doublyLinkedList.get(5);
+doublyLinkedList.set(9, 5);
+console.log("\n");
 doublyLinkedList.print();
 
 // console.log(doublyLinkedList);
