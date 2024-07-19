@@ -33,6 +33,32 @@ class DuublyLinkedList {
     }
     return;
   }
+
+  pop() {
+    if (!this.head) {
+      return null;
+    }
+    // agar linked list may ek hi element hai to head and tail
+    // ko null assign krde na baba
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    }
+    // tail may tail ka previous daal do
+    this.tail = this.tail.prev;
+    // or tail k next ko null krdo
+    this.tail.next = null;
+    this.length--;
+  }
+
+  print() {
+    let node = this.head;
+    while (node) {
+      console.log(node.value);
+      node = node.next;
+    }
+  }
 }
 
 const doublyLinkedList = new DuublyLinkedList();
@@ -45,5 +71,7 @@ doublyLinkedList.push(5);
 doublyLinkedList.push(6);
 doublyLinkedList.push(7);
 doublyLinkedList.push(8);
+doublyLinkedList.pop();
+doublyLinkedList.print();
 
-console.log(doublyLinkedList);
+// console.log(doublyLinkedList);
