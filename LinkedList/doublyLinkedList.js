@@ -111,10 +111,12 @@ class DuublyLinkedList {
   }
 
   set(value, index) {
+    // index wala element nikaal
     let node = this.get(index);
     if (!node) {
       return false;
     }
+    // uski value may new value add krde
     node.value = value;
     return;
   }
