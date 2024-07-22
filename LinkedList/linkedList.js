@@ -185,18 +185,18 @@ class LinkedList {
     this.head = this.tail;
     this.tail = temp;
 
-    let node = this.tail;
+    let curr = this.tail;
     let nextNode;
     let prevNode = null;
     while (i < this.length) {
       // nextNode may agle node daal do
-      nextNode = node.next;
+      nextNode = curr.next;
       // jo current node hai, uske next may pichle node ko daal do
-      node.next = prevNode;
+      curr.next = prevNode;
       // pichle node may current ka node daal do
-      prevNode = node;
+      prevNode = curr;
       // current node may next node daal do
-      node = nextNode;
+      curr = nextNode;
       i++;
     }
 

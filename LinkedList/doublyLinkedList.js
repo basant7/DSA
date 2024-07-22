@@ -164,6 +164,12 @@ class DuublyLinkedList {
     // or previous node k next may next node daal do
     prevNode.next = nextNode;
   }
+
+  // reverse(){
+  //   let temp = this.head;
+  //   this.head = this.tail;
+  //   this.tail = temp;
+  // }
 }
 
 const doublyLinkedList = new DuublyLinkedList();
