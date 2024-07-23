@@ -165,11 +165,27 @@ class DuublyLinkedList {
     prevNode.next = nextNode;
   }
 
-  // reverse(){
-  //   let temp = this.head;
-  //   this.head = this.tail;
-  //   this.tail = temp;
-  // }
+  reverse() {
+    // swap the head and tail
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    // current wale node may head rakho
+    let current = temp;
+    let previous;
+    // jab tak current hai
+    while (current) {
+      // previous may current ka prevoius store krdo taaki reference rhe
+      previous = current.prev;
+      // ab current k previous may current ka next daal do
+      current.prev = current.next;
+      // current k next may current ka prevoius daal do
+      current.next = previous;
+      // current ko next element may update krdo
+      current = current.prev;
+    }
+  }
 }
 
 const doublyLinkedList = new DuublyLinkedList();
@@ -190,6 +206,7 @@ doublyLinkedList.set(9, 5);
 doublyLinkedList.insertAtAnywhere(6, 5);
 doublyLinkedList.deleteAtAnywhere(6);
 console.log("\n");
+doublyLinkedList.reverse();
 doublyLinkedList.print();
 
 console.log(doublyLinkedList);
