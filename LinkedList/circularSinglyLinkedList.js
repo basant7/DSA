@@ -69,9 +69,52 @@ class CircularSinglyLinkedList {
     }
     let temp = this.head;
     do {
+      // console.log(temp);
       console.log(temp.value);
       temp = temp.next;
     } while (temp != this.head);
+  }
+
+  insertAtBegining(value) {
+    let newNode = new Node(value);
+    // agar LL khali hai to fir head and tail ko new node assign krdo
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      // circular bnane k liye
+      this.tail.next = this.head;
+      this.length++;
+      return;
+    }
+    // current head ko kisi variable may store krlo
+    let currentHead = this.head;
+    // head ko new node assign krdo
+    this.head = newNode;
+    // head k next may purana head daal do
+    this.head.next = currentHead;
+    // tail ko new head ko point krne k liye
+    this.tail.next = this.head;
+    this.length++;
+    return;
+  }
+
+  deleteAtBegining() {
+    if (this.length < 0) return false;
+    // agar ek hi element hai to head and tail ko
+    // null assign krdo
+    if (this.length == 1) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return;
+    }
+    // head k agli node ko nextNode may daal do
+    let nextNode = this.head.next;
+    // fir agli node ko head bna do
+    this.head = nextNode;
+    // last node head ko point kra do
+    this.tail.next = this.head;
+    this.length--;
   }
 }
 
@@ -80,4 +123,7 @@ circularSinglyLinkedList.push(1);
 circularSinglyLinkedList.push(2);
 circularSinglyLinkedList.push(3);
 circularSinglyLinkedList.push(4);
+circularSinglyLinkedList.insertAtBegining(5);
+circularSinglyLinkedList.insertAtBegining(6);
+circularSinglyLinkedList.deleteAtBegining();
 circularSinglyLinkedList.traverse();
