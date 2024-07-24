@@ -116,6 +116,19 @@ class CircularSinglyLinkedList {
     this.tail.next = this.head;
     this.length--;
   }
+
+  get(index) {
+    // agar LL khali hai ya fir index length se jada hai to false return kr do
+    if (this.length < 0 || this.length <= index) return false;
+    let node = this.head;
+    let count = 0;
+    // count tab tak chlao jab tak vo index tak nahi pahunch jata
+    while (count !== index) {
+      node = node.next;
+      count++;
+    }
+    return node.value;
+  }
 }
 
 let circularSinglyLinkedList = new CircularSinglyLinkedList();
@@ -126,4 +139,5 @@ circularSinglyLinkedList.push(4);
 circularSinglyLinkedList.insertAtBegining(5);
 circularSinglyLinkedList.insertAtBegining(6);
 circularSinglyLinkedList.deleteAtBegining();
+console.log("Get element at index 3 -> ", circularSinglyLinkedList.get(3));
 circularSinglyLinkedList.traverse();
