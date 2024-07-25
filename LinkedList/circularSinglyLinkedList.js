@@ -32,6 +32,7 @@ class CircularSinglyLinkedList {
     // or circular bna do LL ko
     this.tail.next = this.head;
     this.length++;
+    return;
   }
 
   pop() {
@@ -61,6 +62,7 @@ class CircularSinglyLinkedList {
     // but humne isko circular bnana hai to hum tail k next may head daal denge
     this.tail.next = this.head;
     this.length--;
+    return;
   }
 
   traverse() {
@@ -115,6 +117,7 @@ class CircularSinglyLinkedList {
     // last node head ko point kra do
     this.tail.next = this.head;
     this.length--;
+    return;
   }
 
   get(index) {
@@ -127,7 +130,44 @@ class CircularSinglyLinkedList {
       node = node.next;
       count++;
     }
-    return node.value;
+    return node;
+  }
+
+  pushAtIndex(value, index) {
+    let newNode = new Node(value);
+    // agar kisi chutiye ney index < 0 ya > linked list ki length
+    // to false return krdo
+    if (index < 0 || index > this.length) return false;
+    // agar index === linked list length to fir value last m jayegi
+    if (index === this.length) this.push(value);
+    // agr index === 0 to value first m jayegi
+    if (index === 0) this.insertAtBegining(value);
+    // current index pr jo node abhi hai usko ek variable m store krlo (prev)
+    let prevNode = this.get(index - 1);
+    // index pr jo element hai usko ek variable may daal do
+    let curr = prevNode.next;
+    // pichli node k next ko new node assign krdo
+    prevNode.next = newNode;
+    // new node k next may current daal do
+    newNode.next = curr;
+    this.length++;
+    return;
+  }
+
+  deleteAtIndex(index) {
+    // agar kisi chutiye ney index < 0 ya > linked list ki length
+    // to false return krdo
+    if (index < 0 || index >= this.length) return false;
+    // agar index last element ko refer kr rha hai to pop krdo
+    if (index == this.length) return this.pop();
+    // jis index ko delete krna hai uska prevoius element nikal lo
+    let prevNode = this.get(index - 1);
+    // current index pr jo element hai usko ek variable may store krdo
+    let curr = prevNode.next;
+    // previous node ka next ko current node k next ko assign krdo
+    prevNode.next = curr.next;
+    this.length--;
+    return;
   }
 }
 
@@ -140,4 +180,6 @@ circularSinglyLinkedList.insertAtBegining(5);
 circularSinglyLinkedList.insertAtBegining(6);
 circularSinglyLinkedList.deleteAtBegining();
 console.log("Get element at index 3 -> ", circularSinglyLinkedList.get(3));
+circularSinglyLinkedList.pushAtIndex(7, 3);
+circularSinglyLinkedList.deleteAtIndex(4);
 circularSinglyLinkedList.traverse();
