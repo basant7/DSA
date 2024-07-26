@@ -55,7 +55,9 @@ class CirculardoublyLinkedList {
       this.length = 0;
       return;
     }
+    // tail may current tail ka previous daal do
     this.tail = this.tail.prev;
+    // or tail k next may head daal do
     this.tail.next = this.head;
     this.length--;
     return;
@@ -85,9 +87,13 @@ class CirculardoublyLinkedList {
       this.length++;
       return;
     }
+    // head k prev may new node daal do
     this.head.prev = newNode;
+    // new node k next this current head daal do
     newNode.next = this.head;
+    // head ko update krdo new node k sath
     this.head = newNode;
+    // ab node ko circular bna do
     this.head.prev = this.tail;
     this.tail.next = this.head;
     this.length++;
@@ -108,7 +114,7 @@ class CirculardoublyLinkedList {
     let nextNode = this.head.next;
     // fir agli node ko head bna do
     this.head = nextNode;
-    // last node head ko point kra do
+    // ab node ko circular bna do
     this.tail.next = this.head;
     this.head.prev = this.tail;
     this.length--;
@@ -143,9 +149,11 @@ class CirculardoublyLinkedList {
     let curr = prevNode.next;
     // pichli node k next ko new node assign krdo
     prevNode.next = newNode;
+    // new node k previous may previous node daal do
     newNode.prev = prevNode;
     // new node k next may current daal do
     newNode.next = curr;
+    // current k previous may new node daal do
     curr.prev = newNode;
     this.length++;
     return;
@@ -163,7 +171,9 @@ class CirculardoublyLinkedList {
     let curr = prevNode.next;
     // previous node ka next ko current node k next ko assign krdo
     let next = curr.next;
+    // previous node k next may index k next node daal do
     prevNode.next = next;
+    // next node k previous may previous node daal do
     next.prev = prevNode; 
     this.length--;
     return;
