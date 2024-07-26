@@ -163,6 +163,7 @@ class DuublyLinkedList {
     nextNode.prev = prevNode;
     // or previous node k next may next node daal do
     prevNode.next = nextNode;
+    this.length--;
   }
 
   reverse() {
