@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class CircularSinglyLinkedList {
+class CirculardoublyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -170,18 +170,18 @@ class CircularSinglyLinkedList {
   }
 }
 
-let circularSinglyLinkedList = new CircularSinglyLinkedList();
-circularSinglyLinkedList.push(1);
-circularSinglyLinkedList.push(2);
-circularSinglyLinkedList.push(3);
-circularSinglyLinkedList.push(4);
-circularSinglyLinkedList.push(10);
-circularSinglyLinkedList.push(12);
-circularSinglyLinkedList.pop();
-circularSinglyLinkedList.insertAtBegining(5);
-circularSinglyLinkedList.insertAtBegining(6);
-circularSinglyLinkedList.deleteAtBegining();
-console.log("Get element at index 3 -> ", circularSinglyLinkedList.get(3));
-circularSinglyLinkedList.pushAtIndex(7, 3);
-circularSinglyLinkedList.deleteAtIndex(4);
-circularSinglyLinkedList.traverse();
+let circulardoublyLinkedList = new CirculardoublyLinkedList();
+circulardoublyLinkedList.push(1);
+circulardoublyLinkedList.push(2);
+circulardoublyLinkedList.push(3);
+circulardoublyLinkedList.push(4);
+circulardoublyLinkedList.push(10);
+circulardoublyLinkedList.push(12);
+circulardoublyLinkedList.pop();
+circulardoublyLinkedList.insertAtBegining(5);
+circulardoublyLinkedList.insertAtBegining(6);
+circulardoublyLinkedList.deleteAtBegining();
+console.log("Get element at index 3 -> ", circulardoublyLinkedList.get(3));
+circulardoublyLinkedList.pushAtIndex(7, 3);
+circulardoublyLinkedList.deleteAtIndex(4);
+circulardoublyLinkedList.traverse();
