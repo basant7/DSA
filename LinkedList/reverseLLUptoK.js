@@ -32,6 +32,8 @@ class LinkedList {
   }
 
   reverseUptoSizeK(k) {
+    if (k < 0 || k > this.length) return false;
+
     let count = 0;
 
     let prev = null;
