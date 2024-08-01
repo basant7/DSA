@@ -43,47 +43,24 @@ class LinkedList {
     }
   }
 
-  // two pointer approach
-  detectLoop_1() {
-    // take two pointers
-    // 1st pointer will jump 1 step at a time
-    // 2nd pointer will jump 2 steps at a time
-    let R1 = this.head;
-    let R2 = R1;
-    while (R2 && R2.next) {
-      //   jump 1 step
-      R1 = R1.next;
-      //   jump 2 steps
-      R2 = R2.next.next;
-      // if both the pointers become same
-      if (R1 == R2) return true;
-    }
-    return false;
-  }
-
-  // point each node to temp and
-  // if any node already points to temp then it is a loop
-  detectLoop_2() {
-    // create a temp node
-    let temp = new Node();
-    let current = this.head;
-    while (current != null) {
-      // if current's next is null then return because its not a loop then
-      if (current.next == null) {
-        return false;
+  removeLoop() {
+    let pointer1 = this.head;
+    let pointer2 = pointer1;
+    while (pointer2 && pointer2.next) {
+      pointer1 = pointer1.next;
+      pointer2 = pointer2.next.next;
+      if (pointer1 == pointer2) {
+        pointer1 = this.head;
+        break;
       }
-      //   if current's next == temp that means it is a loop
-      if (current.next == temp) {
-        return true;
-      }
-      //   store the next element
-      let next = current.next;
-      //   point current to temp
-      current.next = temp;
-      //   update temp
-      current = next;
     }
-    return false;
+    let curr;
+    while (pointer1 != pointer2) {
+      pointer1 = pointer1.next;
+      curr = pointer2;
+      pointer2 = pointer2.next;
+    }
+    curr.next = null;
   }
 }
 
@@ -97,6 +74,5 @@ linkedList.push(50);
 linkedList.push(60);
 linkedList.push(70);
 linkedList.makeLLCircular();
-//   linkedList.print();
-console.log(linkedList.detectLoop_1());
-console.log(linkedList.detectLoop_2());
+linkedList.removeLoop();
+linkedList.print();
