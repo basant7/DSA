@@ -44,17 +44,23 @@ class LinkedList {
   }
 
   removeLoop() {
+    // Run 2 pointers approach
     let pointer1 = this.head;
     let pointer2 = pointer1;
     while (pointer2 && pointer2.next) {
       pointer1 = pointer1.next;
       pointer2 = pointer2.next.next;
+      //   if the pointers match then update pointer1 to head and get out of loop
       if (pointer1 == pointer2) {
         pointer1 = this.head;
         break;
       }
     }
     let curr;
+    // now until pointer1 != pointer2
+    // get the node where both the pointers meet
+    // and take the pointer before the pointer2 and make it null
+    // this will eliminate the loop
     while (pointer1 != pointer2) {
       pointer1 = pointer1.next;
       curr = pointer2;
