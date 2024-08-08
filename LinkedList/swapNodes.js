@@ -86,6 +86,6 @@ linkedList.push(6);
 linkedList.push(7);
 linkedList.push(8);
 linkedList.push(9);
-// linkedList.swapNodes();
+// linkedList.swapNodesValues();
 linkedList.swapNodesUsingPointers();
 linkedList.print();
