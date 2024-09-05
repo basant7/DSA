@@ -37,7 +37,6 @@ class Stack {
           this.remove();
         }
       }
-      console.log(this.items);
     }
     // return true if all parenthesis are in matching order
     return true;
