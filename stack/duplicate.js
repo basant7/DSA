@@ -119,3 +119,52 @@ linkedListStack.size();
 console.log(linkedListStack.peek());
 
 linkedListStack.isEmpty();
+
+// practice paranthesis
+
+function matching(a, b) {
+  return (
+    (a === "(" && b === ")") ||
+    (a === "[" && b === "]") ||
+    (a === "{" && b === "}")
+  );
+}
+
+class NewStack1 {
+  constructor() {
+    this.arr = [];
+    this.top = -1;
+  }
+
+  insert(value) {
+    this.arr.push(value);
+    this.top++;
+  }
+
+  delete() {
+    this.arr.pop();
+    this.top--;
+  }
+
+  parenthesis(str) {
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] == "[" || str[i] == "{" || str[i] == "(") {
+        if (i === str.length - 1) {
+          return false;
+        }
+        this.insert(str[i]);
+      } else {
+        if (matching(this.arr[this.top], str[i])) {
+          this.delete();
+        } else {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+}
+
+const paranthesisStack = new NewStack1();
+
+console.log(paranthesisStack.parenthesis("[]{()[]}{}"));

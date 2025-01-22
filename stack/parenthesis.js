@@ -27,6 +27,10 @@ class Stack {
     for (let i = 0; i < str.length; i++) {
       // check if it is a starting parenthesis then insert into the stack
       if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
+        // if the last element is opening braces then return false
+        if(i === str.length - 1){
+          return false
+        }
         this.insert(str[i]);
       } else {
         // else check if the next parenthesis coming is equal to the parenthesis at the top or not
