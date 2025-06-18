@@ -1,22 +1,18 @@
-let target = 7,
-  nums = [2, 3, 1, 2, 4, 3];
+let target = 1,
+  nums = [1, 4, 4];
 
 function minSubArrayLen(target, nums) {
   let i = 0;
-  let j = 1;
-  let sum = nums[i];
+  let j = 0;
+  let sum = 0;
   let result = Number.MAX_SAFE_INTEGER;
-  while (j <= nums.length && i < nums.length && j > i) {
-    if (sum < target) {
-      sum = sum + nums[j];
+
+  for (i = 0; i < nums.length; i++) {
+    sum += nums[i];
+    while (sum >= target) {
+      result = result < i - j + 1 ? result : i - j + 1;
+      sum -= nums[j];
       j++;
-    } else if (sum > target) {
-      sum -= nums[i];
-      i++;
-    } else {
-      result = Math.min(result, j - i + 1);
-      sum -= nums[i];
-      i++;
     }
   }
   return result;
