@@ -92,7 +92,24 @@ class LinkedList {
     console.log(`element at index ${index} is `, node.value);
   }
 
-  reverse() {}
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    let prevElement = null;
+    let currElement = this.tail;
+    let nextElement = currElement.next;
+    let i = 0;
+    while (i < this.length) {
+      nextElement = currElement.next;
+      currElement.next = prevElement;
+      prevElement = currElement;
+      currElement = nextElement;
+      i++;
+    }
+    return;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -106,8 +123,9 @@ linkedList.push(6);
 linkedList.push(7);
 linkedList.push(8);
 linkedList.push(9);
-linkedList.pop();
-linkedList.pop();
-linkedList.pop();
+// linkedList.pop();
+// linkedList.pop();
+// linkedList.pop();
+linkedList.reverse();
 
 linkedList.print();
