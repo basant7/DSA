@@ -92,65 +92,7 @@ class LinkedList {
     console.log(`element at index ${index} is `, node.value);
   }
 
-  deleteFirst() {
-    if (!this.head) {
-      return false;
-    }
-    if (this.length === 1) {
-      this.head = null;
-      this.tail = null;
-      this.length = 0;
-      return;
-    }
-
-    this.head.next = this.head;
-    this.length--;
-  }
-
-  addAtBegining(value) {
-    let newNode = new Node(value);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-      this.length++;
-      return;
-    }
-
-    newNode.next = this.head;
-    this.head = newNode;
-    this.length++;
-  }
-
-  set(value, index) {
-    if (!this.head || index > this.length) {
-      return false;
-    }
-    let node = this.head;
-    let i = 0;
-    while (i !== index) {
-      node = node.next;
-      i++;
-    }
-    node.value = value;
-    return;
-  }
-
-  insertAnywhere(value, index) {
-    if (index < 0 || index > this.length) return false;
-    if (index == this.length) this.push(value);
-    if (index == 0) this.addAtBegining(value);
-    let newNode = new Node(value);
-    let node = this.head;
-    let i = 0;
-    while (i < index - 1) {
-      node = node.next;
-      i++;
-    }
-    let nextNode = node.next;
-    node.next = newNode;
-    newNode.next = nextNode;
-    this.length++;
-  }
+  reverse() {}
 }
 
 const linkedList = new LinkedList();
@@ -167,7 +109,5 @@ linkedList.push(9);
 linkedList.pop();
 linkedList.pop();
 linkedList.pop();
-linkedList.atIndex(3);
-linkedList.insertAnywhere(10, 3);
 
 linkedList.print();
