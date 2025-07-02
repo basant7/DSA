@@ -151,6 +151,28 @@ class LinkedList {
     newNode.next = nextNode;
     this.length++;
   }
+
+  delereAnywhere(index) {
+    if (index > this.length || index < 0) return false;
+    if (index === 0) {
+      this.deleteFirst();
+      return;
+    }
+    if (index === this.length) {
+      this.pop();
+      return;
+    }
+    let i = 0;
+    let node = this.head;
+    let prev = null;
+    while (i !== index) {
+      prev = node;
+      node = node.next;
+      i++;
+    }
+    prev.next = node.next;
+    this.length--;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -169,5 +191,6 @@ linkedList.pop();
 linkedList.pop();
 linkedList.atIndex(3);
 linkedList.insertAnywhere(10, 3);
+linkedList.delereAnywhere(3);
 
 linkedList.print();
