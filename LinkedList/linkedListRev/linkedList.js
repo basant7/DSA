@@ -4,6 +4,9 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+
+    // detect loop example below
+    this.isThere = false;
   }
 }
 
@@ -173,6 +176,74 @@ class LinkedList {
     prev.next = node.next;
     this.length--;
   }
+
+  makeCircular() {
+    this.tail.next = this.head.next.next.next.next;
+  }
+
+  // here many try to do it like this using object but there is one flaw here
+  // see whenever you pass node as an index for the object, they are always converted to strings instead of references
+  // ["[object, object]"]
+  detectLoop1() {
+    let obj = {};
+    let node = this.head;
+    while (node != null) {
+      if (!obj[node]) {
+        obj[node] = node;
+        console.log(node.value);
+        node = node.next;
+      } else {
+        console.log("isLoop");
+        return;
+      }
+    }
+  }
+
+  // one solution is to modify the original node and add a variable inside it
+  detectLoop2() {
+    let node = this.head;
+    while (node != null) {
+      if (node.isThere) {
+        console.log("is a loop");
+        return;
+      }
+      node.isThere = true;
+      node = node.next;
+      console.log(node.value);
+    }
+  }
+
+  // one solution is to use a set
+  detectLoop3() {
+    let set = new Set();
+    let node = this.head;
+    while (node != null) {
+      if (set.has(node)) {
+        console.log("is a loop");
+        return;
+      }
+      set.add(node);
+      node = node.next;
+      console.log(node.value);
+    }
+  }
+
+  // this is the most efficient method also known as floyd's algo
+  // also known as two pointer algorithm
+  detectLoop4() {
+    let first = this.head;
+    let second = this.head.next;
+    while (second != null) {
+      if (first == second) {
+        console.log("is a loop wowwww");
+        return;
+      }
+      first = first.next;
+      second = second.next.next;
+      console.log("first --> ", first.value);
+      console.log("second --> ", second.value);
+    }
+  }
 }
 
 const linkedList = new LinkedList();
@@ -186,11 +257,19 @@ linkedList.push(6);
 linkedList.push(7);
 linkedList.push(8);
 linkedList.push(9);
-linkedList.pop();
-linkedList.pop();
-linkedList.pop();
-linkedList.atIndex(3);
-linkedList.insertAnywhere(10, 3);
-linkedList.delereAnywhere(3);
+// linkedList.pop();
+// linkedList.pop();
+// linkedList.pop();
+// linkedList.atIndex(3);
+// linkedList.insertAnywhere(10, 3);
+// linkedList.delereAnywhere(3);
 
-linkedList.print();
+// detect loop function calls
+
+linkedList.makeCircular();
+// linkedList.detectLoop1();
+// linkedList.detectLoop2();
+// linkedList.detectLoop3();
+linkedList.detectLoop4();
+
+// linkedList.print();
