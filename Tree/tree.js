@@ -52,3 +52,9 @@ values.forEach((value) => bst.insert(value));
 
 console.log("In-order traversal of BST:");
 bst.inorder();
+
+//                                                            50
+//                                                        /         \
+//                                                      30           70
+//                                                    /     \       /   \
+//                                                  20      40     60    80
